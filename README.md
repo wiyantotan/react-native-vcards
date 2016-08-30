@@ -10,7 +10,7 @@ Create vCards to import contacts into Outlook, iOS, Mac OS, and Android devices 
 ## Install
 
 ```sh
-npm install vcards-js --save
+npm install react-native-vcards@https://github.com/sheparddw/react-native-vcards.git --save
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ Below is a simple example of how to create a basic vCard and how to save it to a
 ### Basic vCard
 
 ```js
-var vCard = require('vcards-js');
+import vCard from 'react-native-vcards';
 
 //create a new vCard
 vCard = vCard();
@@ -51,6 +51,7 @@ You can use vCards JS on your website. Below is an example of how to get it work
 
 ```js
 
+import vCard from 'react-native-vcards';
 var express = require('express');
 var router = express.Router();
 
@@ -59,8 +60,6 @@ module.exports = function (app) {
 };
 
 router.get('/', function (req, res, next) {
-
-    var vCard = require('vcards-js');
 
     //create a new vCard
     vCard = vCard();
@@ -96,7 +95,7 @@ vCard.logo.embedFromFile('/path/to/file.png');
 The following shows a vCard with everything filled out.
 
 ```js
-var vCard = require('vcards-js');
+import vCard from 'react-native-vcards';
 
 //create a new vCard
 vCard = vCard();
@@ -176,7 +175,8 @@ vCard.logo.embedFromFile('logo.jpg');
 vCard.version = '3.0'; //can also support 2.1 and 4.0, certain versions only support certain fields
 
 //save to file
-vCard.saveToFile('./eric-nesser.vcf');
+const documentPath = rnfs.DocumentDirectoryPath;
+vCard.saveToFile(`${documentPath}/eric-nesser.vcf`);
 
 //get as formatted string
 console.log(vCard.getFormattedString());
