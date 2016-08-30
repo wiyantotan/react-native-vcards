@@ -1,4 +1,4 @@
-React Native vCards - [vCards JS](https://github.com/enesser/vCards-js) for React Native
+React Native vCards - [vCards JS](https://github.com/enesser/vCards-js) for use with React Native
 =====
 
 [![Build Status](https://travis-ci.org/enesser/vCards-js.svg?branch=master)](https://travis-ci.org/enesser/vCards-js.svg?branch=master)
@@ -47,41 +47,6 @@ contact.saveToFile('./eric-nesser.vcf');
 
 //get as formatted string
 console.log(contact.getFormattedString());
-
-```
-
-### On the Web
-
-You can use vCards JS on your website. Below is an example of how to get it working on Express 4.
-
-```js
-
-import vCard from 'react-native-vcards';
-var express = require('express');
-var router = express.Router();
-
-module.exports = function (app) {
-  app.use('/', router);
-};
-
-router.get('/', function (req, res, next) {
-
-    //create a new vCard
-    contact = vCard();
-
-    //set properties
-    contact.firstName = 'Eric';
-    contact.middleName = 'J';
-    contact.lastName = 'Nesser';
-    contact.organization = 'ACME Corporation';
-
-    //set content-type and disposition including desired filename
-    res.set('Content-Type', 'text/vcard; name="enesser.vcf"');
-    res.set('Content-Disposition', 'inline; filename="enesser.vcf"');
-
-    //send the response
-    res.send(contact.getFormattedString());
-});
 
 ```
 
