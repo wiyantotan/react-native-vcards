@@ -314,7 +314,7 @@ var vCard = (function () {
             var vCardFormatter = require('./lib/vCardFormatter');
             var contents = vCardFormatter.getFormattedString(this);
 
-            fs.writeFile(filename, contents, { encoding: 'utf8' });
+            return fs.writeFile(filename, contents, 'utf8');
         }
     };
 });
