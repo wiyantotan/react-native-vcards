@@ -8,7 +8,12 @@ Create vCards to import contacts into Outlook, iOS, Mac OS, and Android devices 
 ![Screenshot](https://cloud.githubusercontent.com/assets/5659221/5240131/f99c1f3e-78c1-11e4-83b1-4f6e70eecf65.png)
 
 ## Install
-
+Note that this package requires [react-native-fs](https://github.com/johanneslumpe/react-native-fs) for saving files.
+If you have installed [rnpm](https://github.com/rnpm/rnpm), the easy way to install react-native-fs is the following:
+```sh
+npm install react-native-fs && rnpm link react-native-fs
+```
+Then to install this package, run the following:
 ```sh
 npm install react-native-vcards@https://github.com/idxbroker/react-native-vcards.git --save
 ```
