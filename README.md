@@ -10,7 +10,7 @@ Create vCards to import contacts into Outlook, iOS, Mac OS, and Android devices 
 ## Install
 
 ```sh
-npm install react-native-vcards@https://github.com/sheparddw/react-native-vcards.git --save
+npm install react-native-vcards@https://github.com/idxbroker/react-native-vcards.git --save
 ```
 
 ## Usage
