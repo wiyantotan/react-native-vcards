@@ -1,4 +1,4 @@
-React Native vCards - a fork of [vCards JS](https://github.com/enesser/vCards-js) for React Native
+React Native vCards - [vCards JS](https://github.com/enesser/vCards-js) for React Native
 =====
 
 [![Build Status](https://travis-ci.org/enesser/vCards-js.svg?branch=master)](https://travis-ci.org/enesser/vCards-js.svg?branch=master)
