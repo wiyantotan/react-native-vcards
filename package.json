@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "moment": "~2.13.0",
-    "react-native-fs": *
+    "react-native-fs": "^2.0.1-rc.2"
   },
   "devDependencies": {
     "mocha": "~2.5.3"
