@@ -3,6 +3,8 @@ React Native vCards - [vCards JS](https://github.com/enesser/vCards-js) for use 
 
 [![Build Status](https://travis-ci.org/enesser/vCards-js.svg?branch=master)](https://travis-ci.org/enesser/vCards-js.svg?branch=master)
 
+Updated for newer versions of react-native-fs. Now listed as a peerDependency.
+
 Create vCards to import contacts into Outlook, iOS, Mac OS, and Android devices from your website or application.
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/5659221/5240131/f99c1f3e-78c1-11e4-83b1-4f6e70eecf65.png)
