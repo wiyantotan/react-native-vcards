@@ -1,5 +1,6 @@
 /********************************************************************************
-    vCards-js, Eric J Nesser, November 2014
+    React Native vCards, Daniel Shepard, August 2016
+    Originally from vCards-js, Eric J Nesser, November 2014
 ********************************************************************************/
 /*jslint node: true */
 'use strict';
@@ -9,8 +10,7 @@
  */
 var vCard = (function () {
 
-  var fs   = require('fs');
-  var path = require('path');
+  var fs = require('react-native-fs');
 
     /**
      * Get photo object for storing photos in vCards
@@ -37,8 +37,7 @@ var vCard = (function () {
              * @param  {string} filename
              */
             embedFromFile: function(fileLocation) {
-              this.mediaType = path.extname(fileLocation).toUpperCase().replace(/\./g, "");
-              var imgData = fs.readFileSync(fileLocation);
+              var imgData = fs.readFile(fileLocation);
               this.url = imgData.toString('base64');
               this.base64 = true;
             }
@@ -315,8 +314,7 @@ var vCard = (function () {
             var vCardFormatter = require('./lib/vCardFormatter');
             var contents = vCardFormatter.getFormattedString(this);
 
-            var fs = require('fs');
-            fs.writeFileSync(filename, contents, { encoding: 'utf8' });
+            return fs.writeFile(filename, contents, 'utf8');
         }
     };
 });

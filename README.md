@@ -1,16 +1,23 @@
-vCards JS
+React Native vCards - [vCards JS](https://github.com/enesser/vCards-js) for use with React Native
 =====
 
 [![Build Status](https://travis-ci.org/enesser/vCards-js.svg?branch=master)](https://travis-ci.org/enesser/vCards-js.svg?branch=master)
+
+Updated for newer versions of react-native-fs. Now listed as a peerDependency.
 
 Create vCards to import contacts into Outlook, iOS, Mac OS, and Android devices from your website or application.
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/5659221/5240131/f99c1f3e-78c1-11e4-83b1-4f6e70eecf65.png)
 
 ## Install
-
+Note that this package requires [react-native-fs](https://github.com/johanneslumpe/react-native-fs) for saving files.
+If you have installed [rnpm](https://github.com/rnpm/rnpm), the easy way to install react-native-fs is the following:
 ```sh
-npm install vcards-js --save
+npm install react-native-fs && rnpm link react-native-fs
+```
+Then to install this package, run the following:
+```sh
+npm install react-native-vcards@https://github.com/idxbroker/react-native-vcards.git --save
 ```
 
 ## Usage
@@ -20,64 +27,28 @@ Below is a simple example of how to create a basic vCard and how to save it to a
 ### Basic vCard
 
 ```js
-var vCard = require('vcards-js');
+import vCard from 'react-native-vcards';
 
 //create a new vCard
-vCard = vCard();
+contact = vCard();
 
 //set properties
-vCard.firstName = 'Eric';
-vCard.middleName = 'J';
-vCard.lastName = 'Nesser';
-vCard.organization = 'ACME Corporation';
-vCard.photo.attachFromUrl('https://avatars2.githubusercontent.com/u/5659221?v=3&s=460', 'JPEG');
-vCard.workPhone = '312-555-1212';
-vCard.birthday = new Date('01-01-1985');
-vCard.title = 'Software Developer';
-vCard.url = 'https://github.com/enesser';
-vCard.note = 'Notes on Eric';
+contact.firstName = 'Eric';
+contact.middleName = 'J';
+contact.lastName = 'Nesser';
+contact.organization = 'ACME Corporation';
+contact.photo.attachFromUrl('https://avatars2.githubusercontent.com/u/5659221?v=3&s=460', 'JPEG');
+contact.workPhone = '312-555-1212';
+contact.birthday = new Date('01-01-1985');
+contact.title = 'Software Developer';
+contact.url = 'https://github.com/enesser';
+contact.note = 'Notes on Eric';
 
 //save to file
-vCard.saveToFile('./eric-nesser.vcf');
+contact.saveToFile('./eric-nesser.vcf');
 
 //get as formatted string
-console.log(vCard.getFormattedString());
-
-```
-
-### On the Web
-
-You can use vCards JS on your website. Below is an example of how to get it working on Express 4.
-
-```js
-
-var express = require('express');
-var router = express.Router();
-
-module.exports = function (app) {
-  app.use('/', router);
-};
-
-router.get('/', function (req, res, next) {
-
-    var vCard = require('vcards-js');
-
-    //create a new vCard
-    vCard = vCard();
-
-    //set properties
-    vCard.firstName = 'Eric';
-    vCard.middleName = 'J';
-    vCard.lastName = 'Nesser';
-    vCard.organization = 'ACME Corporation';
-
-    //set content-type and disposition including desired filename
-    res.set('Content-Type', 'text/vcard; name="enesser.vcf"');
-    res.set('Content-Disposition', 'inline; filename="enesser.vcf"');
-
-    //send the response
-    res.send(vCard.getFormattedString());
-});
+console.log(contact.getFormattedString());
 
 ```
 
@@ -87,8 +58,8 @@ You can embed images in the photo or logo field instead of linking to them from 
 
 ```js
 //can be Windows or Linux/Unix path structures, and JPEG, PNG, GIF formats
-vCard.photo.embedFromFile('/path/to/file.png');
-vCard.logo.embedFromFile('/path/to/file.png');
+contact.photo.embedFromFile('/path/to/file.png');
+contact.logo.embedFromFile('/path/to/file.png');
 ```
 
 ### Complete Example
@@ -96,90 +67,91 @@ vCard.logo.embedFromFile('/path/to/file.png');
 The following shows a vCard with everything filled out.
 
 ```js
-var vCard = require('vcards-js');
+import vCard from 'react-native-vcards';
 
 //create a new vCard
-vCard = vCard();
+contact = vCard();
 
 //set basic properties shown before
-vCard.firstName = 'Eric';
-vCard.middleName = 'J';
-vCard.lastName = 'Nesser';
-vCard.organization = 'ACME Corporation';
+contact.firstName = 'Eric';
+contact.middleName = 'J';
+contact.lastName = 'Nesser';
+contact.organization = 'ACME Corporation';
 
 //link to image
-vCard.photo.attachFromUrl('https://avatars2.githubusercontent.com/u/5659221?v=3&s=460', 'JPEG');
+contact.photo.attachFromUrl('https://avatars2.githubusercontent.com/u/5659221?v=3&s=460', 'JPEG');
 
 //or embed image
-vCard.photo.attachFromUrl('/path/to/file.jpeg');
+contact.photo.attachFromUrl('/path/to/file.jpeg');
 
-vCard.workPhone = '312-555-1212';
-vCard.birthday = new Date('01-01-1985');
-vCard.title = 'Software Developer';
-vCard.url = 'https://github.com/enesser';
-vCard.workUrl = 'https://acme-corporation/enesser';
-vCard.note = 'Notes on Eric';
+contact.workPhone = '312-555-1212';
+contact.birthday = new Date('01-01-1985');
+contact.title = 'Software Developer';
+contact.url = 'https://github.com/enesser';
+contact.workUrl = 'https://acme-corporation/enesser';
+contact.note = 'Notes on Eric';
 
 //set other vitals
-vCard.nickname = 'Scarface';
-vCard.namePrefix = 'Mr.';
-vCard.nameSuffix = 'JR';
-vCard.gender = 'M';
-vCard.anniversary = new Date('01-01-2004');
-vCard.role = 'Software Development';
+contact.nickname = 'Scarface';
+contact.namePrefix = 'Mr.';
+contact.nameSuffix = 'JR';
+contact.gender = 'M';
+contact.anniversary = new Date('01-01-2004');
+contact.role = 'Software Development';
 
 //set other phone numbers
-vCard.homePhone = '312-555-1313';
-vCard.cellPhone = '312-555-1414';
-vCard.pagerPhone = '312-555-1515';
+contact.homePhone = '312-555-1313';
+contact.cellPhone = '312-555-1414';
+contact.pagerPhone = '312-555-1515';
 
 // set fax/ facsimile numbers
-vCard.homeFax = '312-555-1616';
-vCard.workFax = '312-555-1717';
+contact.homeFax = '312-555-1616';
+contact.workFax = '312-555-1717';
 
 // set email addresses
-vCard.email = 'e.nesser@emailhost.tld';
-vCard.workEmail = 'e.nesser@acme-corporation.tld';
+contact.email = 'e.nesser@emailhost.tld';
+contact.workEmail = 'e.nesser@acme-corporation.tld';
 
 //set logo of organization or personal logo (also supports embedding, see above)
-vCard.logo.attachFromUrl('https://avatars2.githubusercontent.com/u/5659221?v=3&s=460', 'JPEG');
+contact.logo.attachFromUrl('https://avatars2.githubusercontent.com/u/5659221?v=3&s=460', 'JPEG');
 
 //set URL where the vCard can be found
-vCard.source = 'http://mywebpage/myvcard.vcf';
+contact.source = 'http://mywebpage/myvcard.vcf';
 
 //set address information
-vCard.homeAddress.label = 'Home Address';
-vCard.homeAddress.street = '123 Main Street';
-vCard.homeAddress.city = 'Chicago';
-vCard.homeAddress.stateProvince = 'IL';
-vCard.homeAddress.postalCode = '12345';
-vCard.homeAddress.countryRegion = 'United States of America';
+contact.homeAddress.label = 'Home Address';
+contact.homeAddress.street = '123 Main Street';
+contact.homeAddress.city = 'Chicago';
+contact.homeAddress.stateProvince = 'IL';
+contact.homeAddress.postalCode = '12345';
+contact.homeAddress.countryRegion = 'United States of America';
 
-vCard.workAddress.label = 'Work Address';
-vCard.workAddress.street = '123 Corporate Loop\nSuite 500';
-vCard.workAddress.city = 'Los Angeles';
-vCard.workAddress.stateProvince = 'CA';
-vCard.workAddress.postalCode = '54321';
-vCard.workAddress.countryRegion = 'United States of America';
+contact.workAddress.label = 'Work Address';
+contact.workAddress.street = '123 Corporate Loop\nSuite 500';
+contact.workAddress.city = 'Los Angeles';
+contact.workAddress.stateProvince = 'CA';
+contact.workAddress.postalCode = '54321';
+contact.workAddress.countryRegion = 'United States of America';
 
 //set social media URLs
-vCard.socialUrls['facebook'] = 'https://...';
-vCard.socialUrls['linkedIn'] = 'https://...';
-vCard.socialUrls['twitter'] = 'https://...';
-vCard.socialUrls['flickr'] = 'https://...';
-vCard.socialUrls['custom'] = 'https://...';
+contact.socialUrls['facebook'] = 'https://...';
+contact.socialUrls['linkedIn'] = 'https://...';
+contact.socialUrls['twitter'] = 'https://...';
+contact.socialUrls['flickr'] = 'https://...';
+contact.socialUrls['custom'] = 'https://...';
 
 //you can also embed photos from files instead of attaching via URL
-vCard.photo.embedFromFile('photo.jpg');
-vCard.logo.embedFromFile('logo.jpg');
+contact.photo.embedFromFile('photo.jpg');
+contact.logo.embedFromFile('logo.jpg');
 
-vCard.version = '3.0'; //can also support 2.1 and 4.0, certain versions only support certain fields
+contact.version = '3.0'; //can also support 2.1 and 4.0, certain versions only support certain fields
 
 //save to file
-vCard.saveToFile('./eric-nesser.vcf');
+const documentPath = rnfs.DocumentDirectoryPath;
+contact.saveToFile(`${documentPath}/eric-nesser.vcf`);
 
 //get as formatted string
-console.log(vCard.getFormattedString());
+console.log(contact.getFormattedString());
 ```
 
 ### Contributions
