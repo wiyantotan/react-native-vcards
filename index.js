@@ -115,25 +115,25 @@ var vCard = (function () {
          * Cell phone number
          * @type {String}
          */
-        cellPhone: '',
+        cellPhone: [],
 
         /**
          * Other cell phone number or pager
          * @type {String}
          */
-        pagerPhone: '',
+        pagerPhone: [],
 
         /**
          * The address for private electronic mail communication
          * @type {String}
          */
-        email: '',
+        email: [],
 
         /**
          * The address for work-related electronic mail communication
          * @type {String}
          */
-        workEmail: '',
+        workEmail: [],
 
         /**
          * First name
@@ -163,13 +163,13 @@ var vCard = (function () {
          * Home phone
          * @type {String}
          */
-        homePhone: '',
+        homePhone: [],
 
         /**
          * Home facsimile
          * @type {String}
          */
-        homeFax: '',
+        homeFax: [],
 
         /**
          * Last name
@@ -271,13 +271,13 @@ var vCard = (function () {
          * Work phone
          * @type {String}
          */
-        workPhone: '',
+        workPhone: [],
 
         /**
          * Work facsimile
          * @type {String}
          */
-        workFax: '',
+        workFax: [],
 
         /**
          * vCard version
